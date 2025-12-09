@@ -63,5 +63,6 @@ It supports Wi-Fi configuration through **Access Point (AP) mode**, uses a **Neo
 }
 )
 
+```
 ![WhatsApp Image 2025-12-09 at 07 45 11_d745960a](https://github.com/user-attachments/assets/3f453054-3e58-4266-a026-815fe7384a29)
 
