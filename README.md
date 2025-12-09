@@ -1,40 +1,46 @@
 #  ESP32 High-Temperature MQTT Monitoring Device (Up to 300 °C)
 
 This project is an ESP32-based temperature monitoring device capable of reading temperatures **up to 300 °C** and publishing them to an **MQTT server**.  
-It supports Wi-Fi configuration through **Access Point (AP) mode**, uses a **NeoPixel LED** for status indication, and includes a **backup battery** to ensure continuous operation during power loss.
+It supports Wi-Fi configuration through **Access Point (AP) mode**, uses a **NeoPixel LED** for system status indication, includes a **backup battery** for uninterrupted operation, and features a **custom-designed enclosure and PCB** developed specifically for this device.
 
 ---
 
-##  Features
+## Features
 
 - **High-temperature sensing (0–300 °C)**
-- **MQTT publishing** of real-time temperature readings
-- **Access Point mode** for Wi-Fi setup through a built-in configuration page
-- **Automatic reconnection** using stored Wi-Fi credentials
-- **NeoPixel LED indicators** for AP mode, MQTT status, and errors
+- **MQTT publishing** of real-time temperature data
+- **Access Point mode** for Wi-Fi setup via built-in configuration page
+- **Automatic reconnection** with stored Wi-Fi credentials
+- **NeoPixel LED indicators** for AP mode, Wi-Fi/MQTT connection, and errors
 - **Backup battery support**  
-  Ensures the ESP32 continues running and sending data even if the main power source is disconnected.
+  Ensures the device continues running during power failures
+- **Custom enclosure design**  
+  I designed and manufactured the physical enclosure for durability using solidworks
+- **Custom PCB design**  
+  The circuit is fully integrated into a professionally designed PCB for reliability and compactness
 
 ---
 
 ## 🛠️ Hardware Requirements
 
 - ESP32 Development Board  
-- High-temperature thermistor / RTD sensor (0–300 °C)  
+- High-temperature thermistor / RTD sensor (up to 300 °C)  
 - Single NeoPixel (WS2812B) LED  
-- 5 V main power supply  
-- **Backup battery (Li-ion or LiPo) with charging module**  
+- 5V main power supply  
+- Backup battery (Li-ion/LiPo) + charging module  
+- **Custom PCB (designed and made for this device)**  
+- **3D-printed or fabricated enclosure**
 
 ---
 
 ##  Device Workflow
 
-1. Device powers on (main supply or backup battery)  
-2. If Wi-Fi credentials are missing → ESP32 starts in **AP Mode**  
-3. User connects to AP and enters Wi-Fi credentials  
-4. ESP32 switches to **Station Mode**  
-5. Temperature data is measured and published to MQTT  
-6. NeoPixel LED indicates the current status  
+1. Power on the device (main power or backup battery)  
+2. If no Wi-Fi credentials → ESP32 enters **AP Mode**  
+3. User connects to AP and enters Wi-Fi details  
+4. Device switches to **Station Mode**  
+5. Temperature is measured and published to MQTT  
+6. NeoPixel LED displays live status  
 
 ---
 
@@ -43,16 +49,17 @@ It supports Wi-Fi configuration through **Access Point (AP) mode**, uses a **Neo
 | Color | Status |
 |-------|---------|
 | 🔵 Blue | AP Mode (Wi-Fi setup) |
-| 🟢 Green | Connected (Wi-Fi + MQTT OK) |
+| 🟢 Green | Successfully connected (Wi-Fi + MQTT) |
 | 🔴 Red | Error / Not connected |
 
 ---
 
 ##  MQTT Information
 
-- **Protocol:** MQTT (PubSubClient)
-- **Data Format:** JSON
-- **Compatible Platforms:** EMQX, HiveMQ, Node-RED, Home Assistant, etc.
+- **Protocol:** MQTT  
+- **Client Library:** PubSubClient  
+- **Message Format:** JSON  
+- **Compatible With:** EMQX, HiveMQ, Node-RED, Home Assistant, etc.
 
 ### Example MQTT Payload
 
