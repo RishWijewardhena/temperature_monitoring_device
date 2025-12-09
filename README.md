@@ -27,7 +27,7 @@ It supports Wi-Fi configuration through **Access Point (AP) mode**, uses a **Neo
 - High-temperature thermistor / RTD sensor (up to 300 °C)  
 - Single NeoPixel (WS2812B) LED  
 - 5V main power supply  
-- Backup battery (Li-ion/LiPo) + charging module  
+- Backup battery (Li-ion) + charging module  
 - **Custom PCB (designed and made for this device)**  
 - **3D-printed or fabricated enclosure**
 
