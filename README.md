@@ -1,17 +1,19 @@
-# ESP32 High-Temperature MQTT Monitoring Device (Up to 300 °C)
+#  ESP32 High-Temperature MQTT Monitoring Device (Up to 300 °C)
 
 This project is an ESP32-based temperature monitoring device capable of reading temperatures **up to 300 °C** and publishing them to an **MQTT server**.  
-It supports Wi-Fi configuration through **Access Point (AP) mode**, and a **NeoPixel LED** displays connection and system status.
+It supports Wi-Fi configuration through **Access Point (AP) mode**, uses a **NeoPixel LED** for status indication, and includes a **backup battery** to ensure continuous operation during power loss.
 
 ---
 
 ##  Features
 
 - **High-temperature sensing (0–300 °C)**
-- **MQTT publishing** of temperature readings
-- **Access Point mode** for Wi-Fi setup via a built-in web page
-- **Automatic reconnection** with stored Wi-Fi credentials
-- **NeoPixel LED indicators** for AP mode, connection success, and errors
+- **MQTT publishing** of real-time temperature readings
+- **Access Point mode** for Wi-Fi setup through a built-in configuration page
+- **Automatic reconnection** using stored Wi-Fi credentials
+- **NeoPixel LED indicators** for AP mode, MQTT status, and errors
+- **Backup battery support**  
+  Ensures the ESP32 continues running and sending data even if the main power source is disconnected.
 
 ---
 
@@ -20,18 +22,19 @@ It supports Wi-Fi configuration through **Access Point (AP) mode**, and a **NeoP
 - ESP32 Development Board  
 - High-temperature thermistor / RTD sensor (0–300 °C)  
 - Single NeoPixel (WS2812B) LED  
-- 5 V Power Supply  
+- 5 V main power supply  
+- **Backup battery (Li-ion or LiPo) with charging module**  
 
 ---
 
 ##  Device Workflow
 
-1. Device powers on  
+1. Device powers on (main supply or backup battery)  
 2. If Wi-Fi credentials are missing → ESP32 starts in **AP Mode**  
-3. User connects to AP and enters Wi-Fi credentials through a config page  
-4. ESP32 switches to **Station Mode** and connects to Wi-Fi  
-5. Temperature values are measured and published to MQTT  
-6. NeoPixel LED shows system status  
+3. User connects to AP and enters Wi-Fi credentials  
+4. ESP32 switches to **Station Mode**  
+5. Temperature data is measured and published to MQTT  
+6. NeoPixel LED indicates the current status  
 
 ---
 
@@ -48,8 +51,8 @@ It supports Wi-Fi configuration through **Access Point (AP) mode**, and a **NeoP
 ##  MQTT Information
 
 - **Protocol:** MQTT (PubSubClient)
-- **Format:** JSON payload
-- **Compatible With:** EMQX, HiveMQ, Home Assistant, Node-RED, etc.
+- **Data Format:** JSON
+- **Compatible Platforms:** EMQX, HiveMQ, Node-RED, Home Assistant, etc.
 
 ### Example MQTT Payload
 
